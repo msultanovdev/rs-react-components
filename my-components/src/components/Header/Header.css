@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 32px;
+    margin-right: 10px;
+    color: black;
+}
+
+.header-path {
+    font-size: 32px;
+    text-transform: uppercase;
+}

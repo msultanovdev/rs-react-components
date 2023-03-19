@@ -3,13 +3,14 @@ import './App.css';
 
 import Main from './pages/Main/Main';
 import Header from './components/Header/Header';
-import { NavigateFunction, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { LocationType, NavigateType } from './types';
 
-class App extends React.Component<{ navigate: NavigateFunction; }> {
+class App extends React.Component<any> {
   render() {
     return(
       <div>
-        <Header navigate={this.props.navigate} />
+        <Header navigate={this.props.navigate} location={this.props.location} />
         <Routes>
           <Route path='home' element={<Main />}></Route>
         </Routes>
@@ -20,7 +21,8 @@ class App extends React.Component<{ navigate: NavigateFunction; }> {
 
 export function AppWithRouter() {
   const navigate = useNavigate();
-  return(<App navigate={navigate}></App>)
+  const location = useLocation();
+  return(<App navigate={navigate} location={location.pathname} />)
 }
 
 export default App;
