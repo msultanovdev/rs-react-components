@@ -1,19 +1,19 @@
 import { NavigateFunction } from "react-router-dom";
 
 export interface CardType {
-    title: string;
-    img: string;
-    description: string
+  title: string;
+  img: string;
+  description: string;
 }
 
 export interface AppType {
-    navigate: NavigateFunction;
-    location: NavigateFunction;
+  navigate: NavigateFunction;
+  location: NavigateFunction;
 }
 
 export type NavigateType = {
-    navigate: NavigateFunction
-}
+  navigate: NavigateFunction;
+};
 export type LocationType = {
-    location: NavigateFunction
-}
+  location: NavigateFunction;
+};

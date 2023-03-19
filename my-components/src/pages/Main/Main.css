@@ -1,13 +1,13 @@
 .main {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 }

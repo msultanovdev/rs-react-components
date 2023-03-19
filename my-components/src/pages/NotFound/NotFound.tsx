@@ -1,16 +1,14 @@
 import React from "react";
-import './NotFound.css';
+import "./NotFound.css";
 
 class NotFound extends React.Component {
-    render(): React.ReactNode {
-        return(
-            <div className="notfound">
-                <h1>
-                    Not Found Page (404 Error)
-                </h1>
-            </div>
-        );
-    }
+  render(): React.ReactNode {
+    return (
+      <div className="notfound">
+        <h1>Not Found Page (404 Error)</h1>
+      </div>
+    );
+  }
 }
 
 export default NotFound;

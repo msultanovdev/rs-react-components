@@ -1,35 +1,35 @@
 .search-bar {
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .search-input {
-    all: unset;
-    color: teal;
-    border: 1px solid rgba(0, 128, 128, 0.495);
-    border-radius: 16px;
-    padding: 5px 10px;
-    transition: all .4s;
+  all: unset;
+  color: teal;
+  border: 1px solid rgba(0, 128, 128, 0.495);
+  border-radius: 16px;
+  padding: 5px 10px;
+  transition: all 0.4s;
 }
 .search-input:hover {
-    border: 1px solid rgba(1, 108, 108, 0.595);
+  border: 1px solid rgba(1, 108, 108, 0.595);
 }
 .search-input:focus {
-    border: 1px solid rgba(0, 88, 88, 0.595);
+  border: 1px solid rgba(0, 88, 88, 0.595);
 }
 
 .btn {
-    padding: 7px 12px;
-    border: 1px solid transparent;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 16px;
-    margin-left: 10px;
-    transition: all .4s;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-left: 10px;
+  transition: all 0.4s;
 }
 .btn:hover {
-    border: 1px solid gray;
+  border: 1px solid gray;
 }
