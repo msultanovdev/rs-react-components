@@ -3,11 +3,20 @@ import "./App.css";
 
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  NavigateFunction,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 
-class App extends React.Component<any> {
+class App extends React.Component<{
+  navigate: NavigateFunction;
+  location: string;
+}> {
   render() {
     return (
       <div>
