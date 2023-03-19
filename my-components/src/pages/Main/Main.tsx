@@ -7,8 +7,8 @@ class Main extends React.Component {
     render(): React.ReactNode {
         return(
             <div className="main">
-                <SearchBar />
-                <div className="main-cards">
+                <SearchBar data-testid="search-input" />
+                <div className="main-cards" data-testid="card-block">
                     <Card 
                         title="Camera" 
                         img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4UK-VacVrppny4aGjzhWStSrcsP_6A1UdFvRLCMg&s" 
