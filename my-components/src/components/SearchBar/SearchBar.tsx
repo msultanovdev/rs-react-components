@@ -23,8 +23,9 @@ class SearchBar extends React.Component {
             className="search-input"
             type="text"
             placeholder="Search..."
+            data-testid="search-input"
           />
-          <button type="submit" className="btn">
+          <button type="submit" className="btn" data-testid="search-button">
             Search
           </button>
         </div>
