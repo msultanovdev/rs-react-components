@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, NavigateFunction } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Header.css';
-import { AppType, LocationType, NavigateType } from "../../types";
 
 class Header extends React.Component<any> {
     render(): React.ReactNode {
