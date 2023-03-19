@@ -4,7 +4,7 @@ import './App.css';
 import Main from './pages/Main/Main';
 import Header from './components/Header/Header';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { LocationType, NavigateType } from './types';
+import NotFound from './pages/NotFound/NotFound';
 
 class App extends React.Component<any> {
   render() {
@@ -13,6 +13,7 @@ class App extends React.Component<any> {
         <Header navigate={this.props.navigate} location={this.props.location} />
         <Routes>
           <Route path='home' element={<Main />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>
     );
