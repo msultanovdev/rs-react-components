@@ -22,7 +22,7 @@ class App extends React.Component<{
       <div>
         <Header navigate={this.props.navigate} location={this.props.location} />
         <Routes>
-          <Route path="home" element={<Main />}></Route>
+          <Route path="/" element={<Main />}></Route>
           <Route path="about" element={<About />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
