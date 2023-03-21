@@ -4,8 +4,8 @@ import "./About.css";
 class About extends React.Component {
   render(): React.ReactNode {
     return (
-      <div className="about">
-        <h1>About Page</h1>
+      <div data-testid="about" className="about">
+        <h1 data-testid="about-title">About Page</h1>
       </div>
     );
   }
