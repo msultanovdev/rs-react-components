@@ -4,8 +4,8 @@ import "./FormPage.css";
 class FormPage extends React.Component {
   render(): React.ReactNode {
     return (
-      <div>
-        <h1>Form</h1>
+      <div className="container">
+        <form action="" className="form"></form>
       </div>
     );
   }
