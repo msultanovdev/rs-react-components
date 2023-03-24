@@ -16,6 +16,9 @@ class Header extends React.Component<{
           <Link className="nav-link" to="about">
             About
           </Link>
+          <Link className="nav-link" to="form-page">
+            Form
+          </Link>
         </nav>
         <p className="header-path">
           {this.props.location.slice(1, this.props.location.length)}
