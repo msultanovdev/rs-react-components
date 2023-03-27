@@ -1,5 +1,6 @@
 import React from "react";
 import "./FormPage.css";
+import FormCard from "../../components/FormCard/FormCard";
 
 class FormPage extends React.Component {
   state = {
@@ -9,6 +10,15 @@ class FormPage extends React.Component {
     isAgree: false,
     isMale: false,
     isFile: false,
+    items: [
+      {
+        name: "John",
+        date: "06.05.2002",
+        car: "BMW",
+        chooseSelection: "Male",
+        file: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
+      },
+    ],
   };
 
   nameInputRef: React.RefObject<HTMLInputElement>;
@@ -82,7 +92,7 @@ class FormPage extends React.Component {
                 ref={this.nameInputRef}
                 type="text"
                 className="input"
-                placeholder="Input"
+                placeholder="Name"
               />
               <p className="input-invalid">
                 {this.state.isValidName
@@ -160,7 +170,18 @@ class FormPage extends React.Component {
             </button>
           </form>
         </div>
-        <div className="cards"></div>
+        <div className="cards">
+          {this.state.items.map((item, index) => (
+            <FormCard
+              key={index}
+              name={item.name}
+              date={item.date}
+              car={item.car}
+              chooseSelection={item.chooseSelection}
+              file={item.file}
+            />
+          ))}
+        </div>
       </div>
     );
   }

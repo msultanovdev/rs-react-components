@@ -17,3 +17,11 @@ export type NavigateType = {
 export type LocationType = {
   location: NavigateFunction;
 };
+
+export type cardProps = {
+  name: string;
+  date: string;
+  car: string;
+  chooseSelection: string;
+  file: string;
+};
