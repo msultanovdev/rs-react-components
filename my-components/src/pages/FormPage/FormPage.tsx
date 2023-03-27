@@ -75,89 +75,92 @@ class FormPage extends React.Component {
   render(): React.ReactNode {
     return (
       <div className="container">
-        <form action="" className="form">
-          <div className="input-wrapper">
-            <input
-              ref={this.nameInputRef}
-              type="text"
-              className="input"
-              placeholder="Input"
-            />
-            <p className="input-invalid">
-              {this.state.isValidName
-                ? "Invalid Name, please use letters!"
-                : ""}
-            </p>
-          </div>
-
-          <div className="input-wrapper">
-            <input
-              ref={this.birthdayRef}
-              type="date"
-              className="input"
-              placeholder="Input"
-            />
-            <p className="input-invalid">
-              {this.state.isValidDate
-                ? "Invalid Date, please use calendar!"
-                : ""}
-            </p>
-          </div>
-
-          <div className="input-wrapper">
-            <div className="select-wrapper">
-              <p>Your favourite car mark: </p>
-              <select defaultValue="Merc" ref={this.favCarRef}>
-                <option value="Merc">Mercedes</option>
-                <option value="BMW">BMW</option>
-                <option value="Ferrari">Ferrari</option>
-                <option value="Porche">Porche</option>
-              </select>
+        <div className="form-container">
+          <form action="" className="form">
+            <div className="input-wrapper">
+              <input
+                ref={this.nameInputRef}
+                type="text"
+                className="input"
+                placeholder="Input"
+              />
+              <p className="input-invalid">
+                {this.state.isValidName
+                  ? "Invalid Name, please use letters!"
+                  : ""}
+              </p>
             </div>
-            <p className="input-invalid">
-              {this.state.isValidCar ? "Please, choose one car!" : ""}
-            </p>
-          </div>
 
-          <div className="input-wrapper">
-            <div className="select-wrapper">
-              <p>Do you agree?: </p>
-              <input type="checkbox" ref={this.checkAgreeRef} />
+            <div className="input-wrapper">
+              <input
+                ref={this.birthdayRef}
+                type="date"
+                className="input"
+                placeholder="Input"
+              />
+              <p className="input-invalid">
+                {this.state.isValidDate
+                  ? "Invalid Date, please use calendar!"
+                  : ""}
+              </p>
             </div>
-            <p className="input-invalid">
-              {this.state.isAgree ? "Check the checkbox" : ""}
-            </p>
-          </div>
 
-          <div className="input-wrapper">
-            <label>
-              <input type="radio" name="isMan" ref={this.maleRef} />
-              Male
-            </label>
-            <label>
-              <input type="radio" name="isMan" ref={this.femaleRef} />
-              Female
-            </label>
-            <p className="input-invalid">
-              {this.state.isMale ? "Check your sex" : ""}
-            </p>
-          </div>
+            <div className="input-wrapper">
+              <div className="select-wrapper">
+                <p>Your favourite car mark: </p>
+                <select defaultValue="Merc" ref={this.favCarRef}>
+                  <option value="Merc">Mercedes</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Ferrari">Ferrari</option>
+                  <option value="Porche">Porche</option>
+                </select>
+              </div>
+              <p className="input-invalid">
+                {this.state.isValidCar ? "Please, choose one car!" : ""}
+              </p>
+            </div>
 
-          <div className="input-wrapper">
-            <input type="file" ref={this.fileRef} />
-            <p className="input-invalid">
-              {this.state.isFile ? "Please, choose file" : ""}
-            </p>
-          </div>
+            <div className="input-wrapper">
+              <div className="select-wrapper">
+                <p>Do you agree?: </p>
+                <input type="checkbox" ref={this.checkAgreeRef} />
+              </div>
+              <p className="input-invalid">
+                {this.state.isAgree ? "Check the checkbox" : ""}
+              </p>
+            </div>
 
-          <button
-            onClick={(e) => this.submitButton(e)}
-            type="submit"
-            className="submitBtn"
-          >
-            Submit
-          </button>
-        </form>
+            <div className="input-wrapper">
+              <label>
+                <input type="radio" name="isMan" ref={this.maleRef} />
+                Male
+              </label>
+              <label>
+                <input type="radio" name="isMan" ref={this.femaleRef} />
+                Female
+              </label>
+              <p className="input-invalid">
+                {this.state.isMale ? "Check your sex" : ""}
+              </p>
+            </div>
+
+            <div className="input-wrapper">
+              <input type="file" ref={this.fileRef} />
+              <p className="input-invalid">
+                {this.state.isFile ? "Please, choose file" : ""}
+              </p>
+            </div>
+
+            <button
+              onClick={(e) => this.submitButton(e)}
+              type="submit"
+              className="submitBtn"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <div className="cards"></div>
       </div>
     );
   }

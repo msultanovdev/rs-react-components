@@ -1,5 +1,5 @@
 .form {
-  padding: 10px 5px;
+  padding: 15px 15px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -8,6 +8,9 @@
   height: 400px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .input {
   all: unset;
@@ -52,4 +55,10 @@
 .select-wrapper {
   display: flex;
   width: 100%;
+}
+
+.form-container {
+  width: 50%;
+  height: 100vh;
+  position: relative;
 }
