@@ -7,12 +7,17 @@ class FormPage extends React.Component {
     isValidDate: false,
     isValidCar: false,
     isAgree: false,
+    isMale: false,
+    isFile: false,
   };
 
   nameInputRef: React.RefObject<HTMLInputElement>;
   birthdayRef: React.RefObject<HTMLInputElement>;
   favCarRef: React.RefObject<HTMLSelectElement>;
   checkAgreeRef: React.RefObject<HTMLInputElement>;
+  maleRef: React.RefObject<HTMLInputElement>;
+  femaleRef: React.RefObject<HTMLInputElement>;
+  fileRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: never) {
     super(props);
@@ -20,6 +25,9 @@ class FormPage extends React.Component {
     this.birthdayRef = React.createRef<HTMLInputElement>();
     this.favCarRef = React.createRef<HTMLSelectElement>();
     this.checkAgreeRef = React.createRef<HTMLInputElement>();
+    this.maleRef = React.createRef<HTMLInputElement>();
+    this.femaleRef = React.createRef<HTMLInputElement>();
+    this.fileRef = React.createRef<HTMLInputElement>();
   }
 
   submitButton(e: React.MouseEvent<HTMLButtonElement>) {
@@ -46,6 +54,21 @@ class FormPage extends React.Component {
       this.setState({ isAgree: true });
     } else {
       this.setState({ isAgree: false });
+    }
+
+    if (
+      !(this.maleRef.current as HTMLInputElement).checked &&
+      !(this.femaleRef.current as HTMLInputElement).checked
+    ) {
+      this.setState({ isMale: true });
+    } else {
+      this.setState({ isMale: false });
+    }
+
+    if (!(this.fileRef.current as HTMLInputElement).value) {
+      this.setState({ isFile: true });
+    } else {
+      this.setState({ isFile: false });
     }
   }
 
@@ -103,6 +126,27 @@ class FormPage extends React.Component {
             </div>
             <p className="input-invalid">
               {this.state.isAgree ? "Check the checkbox" : ""}
+            </p>
+          </div>
+
+          <div className="input-wrapper">
+            <label>
+              <input type="radio" name="isMan" ref={this.maleRef} />
+              Male
+            </label>
+            <label>
+              <input type="radio" name="isMan" ref={this.femaleRef} />
+              Female
+            </label>
+            <p className="input-invalid">
+              {this.state.isMale ? "Check your sex" : ""}
+            </p>
+          </div>
+
+          <div className="input-wrapper">
+            <input type="file" ref={this.fileRef} />
+            <p className="input-invalid">
+              {this.state.isFile ? "Please, choose file" : ""}
             </p>
           </div>
 
