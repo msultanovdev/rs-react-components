@@ -43,8 +43,13 @@
   border: none;
   border-radius: 16px;
   background-color: rgb(118, 176, 31);
-  transition: .4s;
+  transition: 0.4s;
 }
 .submitBtn:hover {
   background-color: rgb(87, 131, 22);
+}
+
+.select-wrapper {
+  display: flex;
+  width: 100%;
 }
