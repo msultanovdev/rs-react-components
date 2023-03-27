@@ -11,13 +11,7 @@ class FormCard extends React.Component<cardProps> {
           <p>Birthday: {this.props.date}</p>
           <p>Sex: {this.props.chooseSelection}</p>
           <p>Favourite Car: {this.props.car}</p>
-        </div>
-        <div>
-          <img
-            style={{ width: "200px", height: "200px" }}
-            src={this.props.file}
-            alt="file"
-          />
+          <p>File path: {this.props.file}</p>
         </div>
       </div>
     );

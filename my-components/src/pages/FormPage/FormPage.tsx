@@ -1,8 +1,10 @@
 import React from "react";
 import "./FormPage.css";
 import FormCard from "../../components/FormCard/FormCard";
+import { cardProps } from "../../types";
 
 class FormPage extends React.Component {
+  items: cardProps[] = [];
   state = {
     isValidName: false,
     isValidDate: false,
@@ -10,15 +12,7 @@ class FormPage extends React.Component {
     isAgree: false,
     isMale: false,
     isFile: false,
-    items: [
-      {
-        name: "John",
-        date: "06.05.2002",
-        car: "BMW",
-        chooseSelection: "Male",
-        file: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
-      },
-    ],
+    items: this.items,
   };
 
   nameInputRef: React.RefObject<HTMLInputElement>;
@@ -79,6 +73,32 @@ class FormPage extends React.Component {
       this.setState({ isFile: true });
     } else {
       this.setState({ isFile: false });
+    }
+
+    if (
+      !this.state.isValidName &&
+      !this.state.isValidDate &&
+      !this.state.isAgree &&
+      !this.state.isFile &&
+      !this.state.isMale &&
+      !this.state.isValidCar
+    ) {
+      const obj = {
+        name: (this.nameInputRef.current as HTMLInputElement).value,
+        date: (this.birthdayRef.current as HTMLInputElement).value,
+        car: (this.favCarRef.current as HTMLSelectElement).value,
+        chooseSelection: (this.maleRef.current as HTMLInputElement).checked
+          ? "Male"
+          : "Female",
+        file: (this.fileRef.current as HTMLInputElement).value,
+      };
+
+      console.log((this.fileRef.current as HTMLInputElement).value);
+      this.state.items.push(obj);
+      const newItems: cardProps[] = this.state.items;
+      this.setState({ items: newItems });
+
+      (this.nameInputRef.current as HTMLInputElement).value = "";
     }
   }
 
@@ -171,16 +191,18 @@ class FormPage extends React.Component {
           </form>
         </div>
         <div className="cards">
-          {this.state.items.map((item, index) => (
-            <FormCard
-              key={index}
-              name={item.name}
-              date={item.date}
-              car={item.car}
-              chooseSelection={item.chooseSelection}
-              file={item.file}
-            />
-          ))}
+          {this.state.items.length
+            ? this.state.items.map((item: cardProps, index) => (
+                <FormCard
+                  key={index}
+                  name={item.name}
+                  date={item.date}
+                  car={item.car}
+                  chooseSelection={item.chooseSelection}
+                  file={item.file}
+                />
+              ))
+            : ""}
         </div>
       </div>
     );
