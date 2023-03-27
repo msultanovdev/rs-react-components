@@ -66,7 +66,11 @@ class FormPage extends React.Component {
                 : ""}
             </p>
           </div>
-          <button onClick={(e) => this.submitButton(e)} type="submit">
+          <button
+            onClick={(e) => this.submitButton(e)}
+            type="submit"
+            className="submitBtn"
+          >
             Submit
           </button>
         </form>

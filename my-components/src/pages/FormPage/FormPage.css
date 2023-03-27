@@ -32,3 +32,19 @@
 .input-invalid {
   color: red;
 }
+
+.submitBtn {
+  padding: 8px 12px;
+  color: white;
+  font-weight: 900;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 16px;
+  background-color: rgb(118, 176, 31);
+  transition: .4s;
+}
+.submitBtn:hover {
+  background-color: rgb(87, 131, 22);
+}
