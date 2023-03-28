@@ -23,6 +23,10 @@ class FormPage extends React.Component {
   femaleRef: React.RefObject<HTMLInputElement>;
   fileRef: React.RefObject<HTMLInputElement>;
 
+  componentDidMount(): void {
+    console.log(this.state);
+  }
+
   constructor(props: never) {
     super(props);
     this.nameInputRef = React.createRef<HTMLInputElement>();
@@ -76,12 +80,13 @@ class FormPage extends React.Component {
     }
 
     if (
-      !this.state.isValidName &&
-      !this.state.isValidDate &&
-      !this.state.isAgree &&
-      !this.state.isFile &&
-      !this.state.isMale &&
-      !this.state.isValidCar
+      (this.nameInputRef.current as HTMLInputElement).value.length >= 3 &&
+      (this.birthdayRef.current as HTMLInputElement).value &&
+      (this.checkAgreeRef.current as HTMLInputElement).checked &&
+      (this.fileRef.current as HTMLInputElement).value &&
+      ((this.maleRef.current as HTMLInputElement).checked ||
+        (this.femaleRef.current as HTMLInputElement).checked) &&
+      (this.favCarRef.current as HTMLSelectElement).value
     ) {
       const obj = {
         name: (this.nameInputRef.current as HTMLInputElement).value,
@@ -93,12 +98,24 @@ class FormPage extends React.Component {
         file: (this.fileRef.current as HTMLInputElement).value,
       };
 
-      console.log((this.fileRef.current as HTMLInputElement).value);
       this.state.items.push(obj);
       const newItems: cardProps[] = this.state.items;
       this.setState({ items: newItems });
 
+      this.setState({
+        isValidName: true,
+        isValidDate: true,
+        isValidCar: true,
+        isAgree: true,
+        isMale: true,
+        isFile: true,
+      });
+
       (this.nameInputRef.current as HTMLInputElement).value = "";
+      (this.birthdayRef.current as HTMLInputElement).value = "";
+      (this.favCarRef.current as HTMLSelectElement).value = "";
+      (this.femaleRef.current as HTMLInputElement).value = "";
+      (this.fileRef.current as HTMLInputElement).value = "";
     }
   }
 
