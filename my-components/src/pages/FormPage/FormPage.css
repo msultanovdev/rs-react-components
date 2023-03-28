@@ -1,5 +1,8 @@
+.container {
+  display: flex;
+}
 .form {
-  padding: 10px 5px;
+  padding: 15px 15px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -8,6 +11,9 @@
   height: 400px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .input {
   all: unset;
@@ -31,4 +37,34 @@
 }
 .input-invalid {
   color: red;
+}
+
+.submitBtn {
+  padding: 8px 12px;
+  color: white;
+  font-weight: 900;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 16px;
+  background-color: rgb(118, 176, 31);
+  transition: 0.4s;
+}
+.submitBtn:hover {
+  background-color: rgb(87, 131, 22);
+}
+
+.select-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.form-container {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+.cards {
+  width: 50%;
 }
