@@ -30,7 +30,7 @@ const Main = () => {
         "Chocolate is made from cocoa beans, the dried and fermented seeds of the cacao tree (Theobroma cacao)",
     },
   ];
-  const [items, setItems] = useState(initItems);
+  const [items] = useState(initItems);
 
   return (
     <div className="main">
