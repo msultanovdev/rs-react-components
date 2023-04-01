@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -6,9 +6,11 @@ const SearchBar = () => {
     localStorage.getItem("inputVal") || ""
   );
   const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    return localStorage.setItem("inputVal", inputRef.current!.value || "");
-  }, [inputVal]);
+  useLayoutEffect(() => {
+    return () => {
+      localStorage.setItem("inputVal", inputRef.current!.value || "");
+    };
+  }, []);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputVal(e.currentTarget.value);
