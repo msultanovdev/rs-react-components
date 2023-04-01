@@ -77,7 +77,7 @@ const FormPage = () => {
         chooseSelection: (maleRef.current as HTMLInputElement).checked
           ? "Male"
           : "Female",
-        file: (fileRef.current as HTMLInputElement).value,
+        file: fileRef.current!.files![0],
       };
 
       const newItems: cardProps[] = items;

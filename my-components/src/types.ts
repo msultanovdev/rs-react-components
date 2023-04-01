@@ -23,5 +23,5 @@ export type cardProps = {
   date: string;
   car: string;
   chooseSelection: string;
-  file: string;
+  file: Blob | MediaSource;
 };
