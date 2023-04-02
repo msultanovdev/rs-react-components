@@ -25,3 +25,11 @@ export type cardProps = {
   chooseSelection: string;
   file: Blob | MediaSource;
 };
+export interface ICardForm {
+  file: FileList | null;
+  name: string;
+  date: string;
+  chooseSelection: string;
+  switcher: boolean;
+  checkbox: boolean;
+}

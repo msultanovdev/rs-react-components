@@ -1,7 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./FormPage.css";
 import FormCard from "../../components/FormCard/FormCard";
-import { cardProps } from "../../types";
+import { ICardForm, cardProps } from "../../types";
+import {
+  FieldValues,
+  SubmitErrorHandler,
+  UseFormRegister,
+  useForm,
+} from "react-hook-form";
 
 const FormPage = () => {
   const [items, setItems] = useState<cardProps[]>([]);
@@ -12,100 +18,116 @@ const FormPage = () => {
   const [isMale, setIsMale] = useState(false);
   const [isFile, setIsFile] = useState(false);
 
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const birthdayRef = useRef<HTMLInputElement>(null);
-  const favCarRef = useRef<HTMLSelectElement>(null);
-  const checkAgreeRef = useRef<HTMLInputElement>(null);
-  const maleRef = useRef<HTMLInputElement>(null);
-  const femaleRef = useRef<HTMLInputElement>(null);
-  const fileRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit } = useForm<ICardForm>();
 
-  const submitButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if ((nameInputRef.current as HTMLInputElement).value.length < 3) {
-      setIsValidName(true);
-    } else {
-      setIsValidName(false);
-    }
+  // const nameInputRef = useRef<HTMLInputElement>(null);
+  // const birthdayRef = useRef<HTMLInputElement>(null);
+  // const favCarRef = useRef<HTMLSelectElement>(null);
+  // const checkAgreeRef = useRef<HTMLInputElement>(null);
+  // const maleRef = useRef<HTMLInputElement>(null);
+  // const femaleRef = useRef<HTMLInputElement>(null);
+  // const fileRef = useRef<HTMLInputElement>(null);
 
-    if (!(birthdayRef.current as HTMLInputElement).value) {
-      setIsValidDate(true);
-    } else {
-      setIsValidDate(false);
-    }
+  // const submitButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   if ((nameInputRef.current as HTMLInputElement).value.length < 3) {
+  //     setIsValidName(true);
+  //   } else {
+  //     setIsValidName(false);
+  //   }
 
-    if (!(favCarRef.current as HTMLSelectElement).value) {
-      setIsValidCar(true);
-    } else {
-      setIsValidCar(false);
-    }
+  //   if (!(birthdayRef.current as HTMLInputElement).value) {
+  //     setIsValidDate(true);
+  //   } else {
+  //     setIsValidDate(false);
+  //   }
 
-    if (!(checkAgreeRef.current as HTMLInputElement).checked) {
-      setIsAgree(true);
-    } else {
-      setIsAgree(false);
-    }
+  //   if (!(favCarRef.current as HTMLSelectElement).value) {
+  //     setIsValidCar(true);
+  //   } else {
+  //     setIsValidCar(false);
+  //   }
 
-    if (
-      !(maleRef.current as HTMLInputElement).checked &&
-      !(femaleRef.current as HTMLInputElement).checked
-    ) {
-      setIsMale(true);
-    } else {
-      setIsMale(false);
-    }
+  //   if (!(checkAgreeRef.current as HTMLInputElement).checked) {
+  //     setIsAgree(true);
+  //   } else {
+  //     setIsAgree(false);
+  //   }
 
-    if (!(fileRef.current as HTMLInputElement).value) {
-      setIsFile(true);
-    } else {
-      setIsFile(false);
-    }
+  //   if (
+  //     !(maleRef.current as HTMLInputElement).checked &&
+  //     !(femaleRef.current as HTMLInputElement).checked
+  //   ) {
+  //     setIsMale(true);
+  //   } else {
+  //     setIsMale(false);
+  //   }
 
-    if (
-      (nameInputRef.current as HTMLInputElement).value.length >= 3 &&
-      (birthdayRef.current as HTMLInputElement).value &&
-      (checkAgreeRef.current as HTMLInputElement).checked &&
-      (fileRef.current as HTMLInputElement).value &&
-      ((maleRef.current as HTMLInputElement).checked ||
-        (femaleRef.current as HTMLInputElement).checked) &&
-      (favCarRef.current as HTMLSelectElement).value
-    ) {
-      const obj = {
-        name: (nameInputRef.current as HTMLInputElement).value,
-        date: (birthdayRef.current as HTMLInputElement).value,
-        car: (favCarRef.current as HTMLSelectElement).value,
-        chooseSelection: (maleRef.current as HTMLInputElement).checked
-          ? "Male"
-          : "Female",
-        file: fileRef.current!.files![0],
-      };
+  //   if (!(fileRef.current as HTMLInputElement).value) {
+  //     setIsFile(true);
+  //   } else {
+  //     setIsFile(false);
+  //   }
 
-      const newItems: cardProps[] = items;
-      newItems.push(obj);
-      setItems(newItems);
+  //   if (
+  //     (nameInputRef.current as HTMLInputElement).value.length >= 3 &&
+  //     (birthdayRef.current as HTMLInputElement).value &&
+  //     (checkAgreeRef.current as HTMLInputElement).checked &&
+  //     (fileRef.current as HTMLInputElement).value &&
+  //     ((maleRef.current as HTMLInputElement).checked ||
+  //       (femaleRef.current as HTMLInputElement).checked) &&
+  //     (favCarRef.current as HTMLSelectElement).value
+  //   ) {
+  //     const obj = {
+  //       name: (nameInputRef.current as HTMLInputElement).value,
+  //       date: (birthdayRef.current as HTMLInputElement).value,
+  //       car: (favCarRef.current as HTMLSelectElement).value,
+  //       chooseSelection: (maleRef.current as HTMLInputElement).checked
+  //         ? "Male"
+  //         : "Female",
+  //       file: fileRef.current!.files![0],
+  //     };
 
-      setIsValidName(true);
-      setIsValidDate(true);
-      setIsValidCar(true);
-      setIsAgree(true);
-      setIsMale(true);
-      setIsFile(true);
+  //     const newItems: cardProps[] = items;
+  //     newItems.push(obj);
+  //     setItems(newItems);
 
-      (nameInputRef.current as HTMLInputElement).value = "";
-      (birthdayRef.current as HTMLInputElement).value = "";
-      (favCarRef.current as HTMLSelectElement).value = "";
-      (femaleRef.current as HTMLInputElement).value = "";
-      (fileRef.current as HTMLInputElement).value = "";
-    }
-  };
+  //     setIsValidName(true);
+  //     setIsValidDate(true);
+  //     setIsValidCar(true);
+  //     setIsAgree(true);
+  //     setIsMale(true);
+  //     setIsFile(true);
+
+  //     (nameInputRef.current as HTMLInputElement).value = "";
+  //     (birthdayRef.current as HTMLInputElement).value = "";
+  //     (favCarRef.current as HTMLSelectElement).value = "";
+  //     (femaleRef.current as HTMLInputElement).value = "";
+  //     (fileRef.current as HTMLInputElement).value = "";
+  //   }
+  // };
+
+  function onSubmit(data: FieldValues) {
+    const newItems: cardProps[] = items;
+    const obj = {
+      name: data.name,
+      date: data.date,
+      car: data.car,
+      chooseSelection: data.chooseSelection,
+      file: data.file[0],
+    };
+
+    setItems([...items, obj]);
+  }
 
   return (
     <div className="container">
       <div className="form-container">
-        <form action="" className="form">
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="input-wrapper">
             <input
-              ref={nameInputRef}
+              {...register("name", { required: true })}
+              name="name"
               type="text"
               className="input"
               placeholder="Name"
@@ -117,7 +139,8 @@ const FormPage = () => {
 
           <div className="input-wrapper">
             <input
-              ref={birthdayRef}
+              {...register("date", { required: true })}
+              name="date"
               type="date"
               className="input"
               placeholder="Input"
@@ -130,7 +153,11 @@ const FormPage = () => {
           <div className="input-wrapper">
             <div className="select-wrapper">
               <p>Your favourite car mark: </p>
-              <select defaultValue="Merc" ref={favCarRef}>
+              <select
+                defaultValue="Merc"
+                {...register("chooseSelection", { required: true })}
+                name="car"
+              >
                 <option value="Merc">Mercedes</option>
                 <option value="BMW">BMW</option>
                 <option value="Ferrari">Ferrari</option>
@@ -145,7 +172,11 @@ const FormPage = () => {
           <div className="input-wrapper">
             <div className="select-wrapper">
               <p>Do you agree?: </p>
-              <input type="checkbox" ref={checkAgreeRef} />
+              <input
+                type="checkbox"
+                {...register("checkbox", { required: true })}
+                name="checkbox"
+              />
             </div>
             <p className="input-invalid">
               {isAgree ? "Check the checkbox" : ""}
@@ -154,28 +185,34 @@ const FormPage = () => {
 
           <div className="input-wrapper">
             <label>
-              <input type="radio" name="isMan" ref={maleRef} />
+              <input
+                type="radio"
+                {...register("switcher", { required: true })}
+              />
               Male
             </label>
             <label>
-              <input type="radio" name="isMan" ref={femaleRef} />
+              <input
+                type="radio"
+                {...register("switcher", { required: true })}
+              />
               Female
             </label>
             <p className="input-invalid">{isMale ? "Check your sex" : ""}</p>
           </div>
 
           <div className="input-wrapper">
-            <input type="file" ref={fileRef} />
+            <input
+              type="file"
+              {...register("file", { required: true })}
+              name="file"
+            />
             <p className="input-invalid">
               {isFile ? "Please, choose file" : ""}
             </p>
           </div>
 
-          <button
-            onClick={(e) => submitButton(e)}
-            type="submit"
-            className="submitBtn"
-          >
+          <button type="submit" className="submitBtn">
             Submit
           </button>
         </form>
