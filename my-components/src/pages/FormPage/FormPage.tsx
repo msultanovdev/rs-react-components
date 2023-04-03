@@ -31,7 +31,7 @@ const FormPage = () => {
     } else {
       setIsValidCar(false);
     }
-    if (!getValues("file")) {
+    if (!getValues("file")?.length) {
       setIsFile(true);
     } else {
       setIsFile(false);
@@ -45,6 +45,11 @@ const FormPage = () => {
       setIsValidDate(true);
     } else {
       setIsValidDate(false);
+    }
+    if (data.chooseSelection === "Option") {
+      setIsValidCar(true);
+    } else {
+      setIsValidCar(false);
     }
 
     if (
@@ -62,6 +67,10 @@ const FormPage = () => {
         chooseSelection: data.chooseSelection,
         file: data.file[0],
       };
+
+      if (data.chooseSelection === "Option") {
+        setIsValidCar(false);
+      }
 
       setItems([...items, obj]);
       reset();
@@ -102,10 +111,11 @@ const FormPage = () => {
             <div className="select-wrapper">
               <p>Your favourite car mark: </p>
               <select
-                defaultValue="Merc"
+                defaultValue="Option"
                 {...register("chooseSelection")}
                 name="car"
               >
+                <option value="Option">Option</option>
                 <option value="Merc">Mercedes</option>
                 <option value="BMW">BMW</option>
                 <option value="Ferrari">Ferrari</option>
