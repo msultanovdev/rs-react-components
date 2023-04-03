@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./FormPage.css";
 import FormCard from "../../components/FormCard/FormCard";
 import { ICardForm, cardProps } from "../../types";
