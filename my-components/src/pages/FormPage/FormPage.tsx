@@ -63,8 +63,8 @@ const FormPage = () => {
       const obj = {
         name: data.name,
         date: data.date,
-        car: data.car,
-        chooseSelection: data.chooseSelection,
+        car: data.chooseSelection,
+        chooseSelection: data.switcher,
         file: data.file[0],
       };
 
@@ -110,11 +110,7 @@ const FormPage = () => {
           <div className="input-wrapper">
             <div className="select-wrapper">
               <p>Your favourite car mark: </p>
-              <select
-                defaultValue="Option"
-                {...register("chooseSelection")}
-                name="car"
-              >
+              <select {...register("chooseSelection")} name="chooseSelection">
                 <option value="Option">Option</option>
                 <option value="Merc">Mercedes</option>
                 <option value="BMW">BMW</option>
@@ -143,11 +139,21 @@ const FormPage = () => {
 
           <div className="input-wrapper">
             <label>
-              <input type="radio" {...register("switcher")} />
+              <input
+                type="radio"
+                {...register("switcher")}
+                value="male"
+                name="switcher"
+              />
               Male
             </label>
             <label>
-              <input type="radio" {...register("switcher")} />
+              <input
+                type="radio"
+                {...register("switcher")}
+                value="female"
+                name="switcher"
+              />
               Female
             </label>
             <p className="input-invalid">{isMale ? "Check your sex" : ""}</p>

@@ -30,6 +30,6 @@ export interface ICardForm {
   name: string;
   date: string;
   chooseSelection: string;
-  switcher: boolean;
+  switcher: string;
   checkbox: boolean;
 }
