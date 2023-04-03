@@ -17,9 +17,7 @@ describe("FormPage", () => {
     render(<FormPage />);
     const submitButton = screen.getByText("Submit");
     fireEvent.click(submitButton);
-    expect(
-      screen.getByText("Your favourite car mark:")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Your favourite car mark:")).toBeInTheDocument();
   });
 
   it("should add new card when all input fields are valid and submitted", () => {
