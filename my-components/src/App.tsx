@@ -6,10 +6,11 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import FormPage from "./pages/FormPage/FormPage";
+import { MainContext } from "./mainContext";
 
 const App = () => {
   return (
-    <div>
+    <MainContext.Provider value={{ items: [], setItems() {} }}>
       <Header />
       <Routes>
         <Route path="/" element={<Main />}></Route>
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="form-page" element={<FormPage />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-    </div>
+    </MainContext.Provider>
   );
 };
 
