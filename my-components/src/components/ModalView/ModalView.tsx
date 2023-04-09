@@ -10,15 +10,15 @@ const ModalView = ({ id }: { id: number | null }) => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${id}`)
       .then((res) => setItem(res.data));
-  }, []);
+  });
 
   const { setIsModalActive } = useContext(MainContext);
 
-  const handleModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleModal = () => {
     setIsModalActive(false);
   };
   return (
-    <div className="modal-container" onClick={(e) => handleModal(e)}>
+    <div className="modal-container" onClick={() => handleModal()}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <p className="item-name">{item?.name}</p>
         <img src={item?.image} alt="item-image" className="item-image" />
