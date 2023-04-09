@@ -1,19 +1,19 @@
 import "./Card.css";
-import { CardType } from "../../types";
+import { IResType } from "../../types";
 
-const Card = ({ title, img, description }: CardType) => {
+const Card = ({ name, image, species }: IResType) => {
   return (
     <div data-testid="card" className="card">
-      <h1 data-testid="card-title">{title}</h1>
+      <h1 data-testid="card-title">{name}</h1>
       <div className="card-content">
         <img
           data-testid="card-image"
-          src={img}
+          src={image}
           alt="card"
           className="card-image"
         />
         <p data-testid="card-description" className="card-content-description">
-          {description}
+          {species}
         </p>
       </div>
     </div>

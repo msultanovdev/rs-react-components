@@ -33,3 +33,10 @@ export interface ICardForm {
   switcher: string;
   checkbox: boolean;
 }
+
+export interface IResType {
+  id: number;
+  image: string;
+  name: string;
+  species: string;
+}
