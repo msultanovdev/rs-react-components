@@ -9,32 +9,34 @@ import { MainContext } from "../../mainContext";
 const Main = () => {
   const { items } = useContext(MainContext);
   const [list, setList] = useState(items);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://rickandmortyapi.com/api/character")
-      .then((res) => setList(res.data.results));
+      .then((res) => setList(res.data.results))
+      .then(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
     setList(items);
-    console.log(items);
   }, [items]);
 
   return (
     <div className="main">
       <SearchBar data-testid="search-input" />
       <div className="main-cards" data-testid="card-block">
-        {list &&
-          list.map((item: IResType) => (
-            <Card
-              key={item.id}
-              name={item.name}
-              image={item.image}
-              species={item.species}
-              id={item.id}
-            />
-          ))}
+        {!isLoading
+          ? list.map((item: IResType) => (
+              <Card
+                key={item.id}
+                name={item.name}
+                image={item.image}
+                species={item.species}
+                id={item.id}
+              />
+            ))
+          : "Progressing..."}
       </div>
     </div>
   );

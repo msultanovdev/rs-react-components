@@ -8,7 +8,7 @@ interface IContext {
 
 export const MainContext = createContext<IContext>({
   items: [],
-  setItems: function (items: IResType[]): void {
+  setItems: function (): void {
     throw new Error("Function not implemented.");
   },
 });
