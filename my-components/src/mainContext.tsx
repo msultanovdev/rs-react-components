@@ -1,14 +1,14 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { IResType } from "./types";
 
-type MainContext = {
+interface IContext {
   items: IResType[];
-  setItems: (items: IResType[]) => void;
-};
-export const MainContext = createContext<MainContext>({
+  setItems: (items: never[]) => void;
+}
+
+export const MainContext = createContext<IContext>({
   items: [],
   setItems: function (items: IResType[]): void {
     throw new Error("Function not implemented.");
   },
 });
-export const useGlobalContext = () => useContext(MainContext);

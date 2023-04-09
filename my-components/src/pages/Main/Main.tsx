@@ -14,6 +14,11 @@ const Main = () => {
     axios
       .get("https://rickandmortyapi.com/api/character")
       .then((res) => setList(res.data.results));
+  }, []);
+
+  useEffect(() => {
+    setList(items);
+    console.log(items);
   }, [items]);
 
   return (

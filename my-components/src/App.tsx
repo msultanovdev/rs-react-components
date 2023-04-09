@@ -7,10 +7,18 @@ import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
 import FormPage from "./pages/FormPage/FormPage";
 import { MainContext } from "./mainContext";
+import { useState } from "react";
 
 const App = () => {
+  const [items, setItems] = useState([]);
+
   return (
-    <MainContext.Provider value={{ items: [], setItems() {} }}>
+    <MainContext.Provider
+      value={{
+        items,
+        setItems,
+      }}
+    >
       <Header />
       <Routes>
         <Route path="/" element={<Main />}></Route>

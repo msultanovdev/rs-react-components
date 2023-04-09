@@ -1,7 +1,10 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useContext, useLayoutEffect, useRef, useState } from "react";
 import "./SearchBar.css";
+import { MainContext } from "../../mainContext";
+import axios from "axios";
 
 const SearchBar = () => {
+  const { setItems } = useContext(MainContext);
   const [inputVal, setInputVal] = useState(
     localStorage.getItem("inputVal") || ""
   );
@@ -19,6 +22,11 @@ const SearchBar = () => {
     setInputVal(e.currentTarget.value);
   };
 
+  const searchByName = () => {
+    axios
+      .get(`https://rickandmortyapi.com/api/character/?name=${inputVal}`)
+      .then((res) => setItems(res.data.results));
+  };
   return (
     <div className="search-bar">
       <div className="search-bar-container">
@@ -31,7 +39,12 @@ const SearchBar = () => {
           placeholder="Search..."
           data-testid="search-input"
         />
-        <button type="submit" className="btn" data-testid="search-button">
+        <button
+          onClick={searchByName}
+          type="submit"
+          className="btn"
+          data-testid="search-button"
+        >
           Search
         </button>
       </div>
