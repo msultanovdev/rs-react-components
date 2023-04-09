@@ -11,12 +11,15 @@ import { useState } from "react";
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   return (
     <MainContext.Provider
       value={{
         items,
         setItems,
+        isModalActive,
+        setIsModalActive,
       }}
     >
       <Header />

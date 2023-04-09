@@ -11,3 +11,6 @@
   flex-wrap: wrap;
   align-items: center;
 }
+.modal-active body {
+  overflow: hidden;
+}
