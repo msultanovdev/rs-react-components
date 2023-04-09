@@ -26,7 +26,9 @@ const Main = () => {
     <div className="main">
       <SearchBar data-testid="search-input" />
       <div className="main-cards" data-testid="card-block">
-        {!isLoading
+        {isLoading
+          ? "Progressing..."
+          : list.length
           ? list.map((item: IResType) => (
               <Card
                 key={item.id}
@@ -36,7 +38,7 @@ const Main = () => {
                 id={item.id}
               />
             ))
-          : "Progressing..."}
+          : "Not data found..."}
       </div>
     </div>
   );

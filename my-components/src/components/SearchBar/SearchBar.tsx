@@ -25,7 +25,10 @@ const SearchBar = () => {
   const searchByName = () => {
     axios
       .get(`https://rickandmortyapi.com/api/character/?name=${inputVal}`)
-      .then((res) => setItems(res.data.results));
+      .then((res) => {
+        setItems(res.data.results);
+      })
+      .catch(() => setItems([]));
   };
   return (
     <div className="search-bar">
