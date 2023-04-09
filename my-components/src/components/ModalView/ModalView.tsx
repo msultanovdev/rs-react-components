@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import "./ModalView.css";
 import axios from "axios";
-import { IResType } from "../../types";
+import { detailedCardProps } from "../../types";
 import { MainContext } from "../../mainContext";
 
 const ModalView = ({ id }: { id: number | null }) => {
-  const [item, setItem] = useState<IResType>();
+  const [item, setItem] = useState<detailedCardProps>();
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${id}`)
@@ -22,7 +22,9 @@ const ModalView = ({ id }: { id: number | null }) => {
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <p className="item-name">{item?.name}</p>
         <img src={item?.image} alt="item-image" className="item-image" />
-        <p className="item-species">{item?.species}</p>
+        <p className="item-text">Species: {item?.species}</p>
+        <p className="item-text">Gender: {item?.gender}</p>
+        <p className="item-text">Status: {item?.status}</p>
       </div>
     </div>
   );

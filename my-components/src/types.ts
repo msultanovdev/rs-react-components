@@ -40,3 +40,11 @@ export interface IResType {
   name: string;
   species: string;
 }
+
+export type detailedCardProps = {
+  image: string;
+  name: string;
+  species: string;
+  status: string;
+  gender: string;
+}
