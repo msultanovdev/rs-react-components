@@ -7,10 +7,12 @@ import { MainContext } from "../../mainContext";
 const ModalView = ({ id }: { id: number | null }) => {
   const [item, setItem] = useState<detailedCardProps>();
   useEffect(() => {
-    axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => setItem(res.data));
-  });
+    const fetchItem = () =>
+      axios
+        .get(`https://rickandmortyapi.com/api/character/${id}`)
+        .then((res) => setItem(res.data));
+    fetchItem();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { setIsModalActive } = useContext(MainContext);
 

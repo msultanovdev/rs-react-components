@@ -47,4 +47,4 @@ export type detailedCardProps = {
   species: string;
   status: string;
   gender: string;
-}
+};

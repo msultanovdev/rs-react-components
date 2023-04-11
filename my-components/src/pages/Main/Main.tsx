@@ -25,7 +25,6 @@ const Main = () => {
   useEffect(() => {
     setList(items);
   }, [items]);
-  console.log(list);
 
   return (
     <div className={`main ${isModalActive ? "modal-active" : ""}`}>
