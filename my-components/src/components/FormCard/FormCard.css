@@ -1,0 +1,16 @@
+.form-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0px;
+  color: rgb(43, 0, 255);
+  width: 90%;
+  background-color: aqua;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.form-card-image {
+  width: 200px;
+  height: 200px;
+}
