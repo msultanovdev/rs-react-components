@@ -1,4 +1,10 @@
-import { useContext, useLayoutEffect, useRef, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import "./SearchBar.css";
 import { MainContext } from "../../mainContext";
 import axios from "axios";
@@ -17,6 +23,15 @@ const SearchBar = () => {
       cleanUp();
     };
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(`https://rickandmortyapi.com/api/character/?name=${inputVal}`)
+      .then((res) => {
+        setItems(res.data.results);
+      })
+      .catch(() => setItems([]));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputVal(e.currentTarget.value);
