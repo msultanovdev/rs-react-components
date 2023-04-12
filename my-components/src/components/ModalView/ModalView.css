@@ -51,7 +51,7 @@
   color: red;
   font-size: 32px;
   font-weight: 900;
-  transition: .3s;
+  transition: 0.3s;
 }
 .close-btn:hover {
   color: rgb(162, 1, 1);

@@ -21,6 +21,11 @@ const SearchBar = () => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputVal(e.currentTarget.value);
   };
+  const handleInputByKey = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === "Enter") {
+      searchByName();
+    }
+  };
 
   const searchByName = () => {
     axios
@@ -36,6 +41,7 @@ const SearchBar = () => {
         <input
           ref={inputRef}
           onInput={handleInput}
+          onKeyDown={(e) => handleInputByKey(e)}
           value={inputVal}
           className="search-input"
           type="text"
