@@ -16,6 +16,7 @@ const Main = () => {
   const { isModalActive, setIsModalActive } = useContext(MainContext);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://rickandmortyapi.com/api/character")
       .then((res) => setList(res.data.results))
