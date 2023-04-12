@@ -38,3 +38,21 @@
   font-size: 20px;
   font-weight: 700;
 }
+.modal-header {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.close-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+  font-size: 32px;
+  font-weight: 900;
+  transition: .3s;
+}
+.close-btn:hover {
+  color: rgb(162, 1, 1);
+}

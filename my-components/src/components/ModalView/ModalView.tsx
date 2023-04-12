@@ -22,7 +22,12 @@ const ModalView = ({ id }: { id: number | null }) => {
   return (
     <div className="modal-container" onClick={() => handleModal()}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <p className="item-name">{item?.name}</p>
+        <div className="modal-header">
+          <p className="item-name">{item?.name}</p>
+          <button className="close-btn" onClick={() => handleModal()}>
+            x
+          </button>
+        </div>
         <img src={item?.image} alt="item-image" className="item-image" />
         <p className="item-text">Species: {item?.species}</p>
         <p className="item-text">Gender: {item?.gender}</p>
