@@ -35,9 +35,11 @@ const SearchBar = () => {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputVal(e.currentTarget.value);
+    localStorage.setItem("inputVal", inputRef.current!.value || "");
   };
   const handleInputByKey = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
+      localStorage.setItem("inputVal", inputRef.current!.value || "");
       searchByName();
     }
   };

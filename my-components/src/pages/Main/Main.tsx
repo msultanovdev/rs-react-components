@@ -16,9 +16,10 @@ const Main = () => {
   const { isModalActive, setIsModalActive } = useContext(MainContext);
 
   useEffect(() => {
+    const inputVal = localStorage.getItem("inputVal") || "";
     setIsLoading(true);
     axios
-      .get("https://rickandmortyapi.com/api/character")
+      .get(`https://rickandmortyapi.com/api/character/?name=${inputVal}`)
       .then((res) => setList(res.data.results))
       .then(() => setIsLoading(false));
   }, []);
