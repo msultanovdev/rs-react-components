@@ -11,13 +11,11 @@ import axios from "axios";
 
 const SearchBar = () => {
   const { setItems } = useContext(MainContext);
-  const [inputVal, setInputVal] = useState(
-    localStorage.getItem("inputVal") || ""
-  );
+  const [inputVal, setInputVal] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   useLayoutEffect(() => {
     const cleanUp = () => {
-      localStorage.setItem("inputVal", inputRef.current!.value || "");
+      // localStorage.setItem("inputVal", inputRef.current!.value || "");
     };
     return () => {
       cleanUp();
